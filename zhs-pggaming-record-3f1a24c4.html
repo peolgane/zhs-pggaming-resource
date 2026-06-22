@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日常翻阅 · pg游戏</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f8f8f5;
+      color: #1e1e1c;
+      font-family: 'Georgia', 'Times New Roman', 'Noto Serif SC', serif;
+      line-height: 1.7;
+      padding: 2rem 1.5rem;
+    }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* 开场短句 – 留白呼吸 */
+    .opening {
+      margin: 3rem 0 2.5rem 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      border-left: 2px solid #c5b9a0;
+      padding-left: 1.25rem;
+      color: #3d3b36;
+    }
+    .opening p {
+      margin-bottom: 0.6rem;
+    }
+    .opening .small-note {
+      font-size: 0.85rem;
+      color: #9a9589;
+      letter-spacing: 0.05em;
+      margin-top: 0.4rem;
+    }
+
+    /* 主标题——克制且清晰 */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin: 2.8rem 0 0.4rem 0;
+      line-height: 1.2;
+      color: #232220;
+    }
+    .subhead {
+      font-size: 1rem;
+      color: #7b776f;
+      margin-bottom: 2.2rem;
+      font-style: italic;
+      border-bottom: 1px solid #e3ded6;
+      padding-bottom: 1rem;
+    }
+
+    /* 承接段落 */
+    .intro-text {
+      margin-bottom: 2rem;
+    }
+    .intro-text p {
+      margin-bottom: 1.2rem;
+    }
+    a {
+      color: #7f5f3a;
+      text-decoration: none;
+      border-bottom: 1px dotted #b7aa99;
+      transition: border 0.2s, color 0.2s;
+    }
+    a:hover {
+      color: #4b3928;
+      border-bottom: 1px solid #4b3928;
+    }
+
+    /* 特点——平实卡片 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin: 2.2rem 0 2rem 0;
+    }
+    .feature-item {
+      background: #f2efe9;
+      border-radius: 0;
+      padding: 1.5rem 1.2rem;
+      flex: 1 1 180px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      border: 1px solid #e7e2d9;
+    }
+    .feature-item h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      color: #3c3832;
+      border-bottom: 1px solid #d6cec1;
+      padding-bottom: 0.4rem;
+    }
+    .feature-item p {
+      font-size: 0.9rem;
+      color: #4f4b44;
+      line-height: 1.6;
+    }
+
+    /* 温和结尾 */
+    .closing {
+      margin: 3rem 0 2.5rem 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0dad0;
+      font-size: 0.95rem;
+      color: #5a554c;
+    }
+    .closing p {
+      margin-bottom: 0.8rem;
+    }
+    .closing .quiet-link {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: #7d7568;
+    }
+
+    /* 响应式 */
+    @media (max-width: 480px) {
+      body { padding: 1.2rem 1rem; }
+      h1 { font-size: 1.8rem; }
+      .feature-item { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+      <p>有时只是随手一翻，想看看游戏里那些熟悉又陌生的名称。</p>
+      <p>机制、版本、术语——总在桌与屏之间来回对照。</p>
+      <div class="small-note">—— 一次日常的查询，一段延伸的阅读。</div>
+    </div>
+
+    <!-- 标题 -->
+    <h1>pg游戏</h1>
+    <div class="subhead">一种带着笔记习惯的旁观方式</div>
+
+    <!-- 承接段落 -->
+    <div class="intro-text">
+      <p>
+        在桌面上摊开的或许是一篇评测、一段更新日志，或只是为了弄清楚某个技能判定。 
+        不知不觉，查询变成对照，对照变成闲逛。 
+        而很多人会在这些时刻里，反复回到同一个站点——<a href="https://zhs-pggaming.com">pg游戏</a>，那里聚合了足够细致的条目与解释。
+      </p>
+      <p>
+        算不上什么惊天发现，更像是书架上那本翻阅最多的册子， 
+        页边被手指磨得发软，但每次翻开仍能找到没注意过的注释。
+      </p>
+    </div>
+
+    <!-- 特点列表 -->
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3>条目清晰</h3>
+        <p>每一个术语或模块都有独立说明，方便对照查阅，减少反复跳转的疲惫。</p>
+      </div>
+      <div class="feature-item">
+        <h3>更新节奏</h3>
+        <p>内容跟随版本迭代调整，老条目会标注修订时间，不至于让参考落空。</p>
+      </div>
+      <div class="feature-item">
+        <h3>无冗余引导</h3>
+        <p>页面结构偏向工具化，没有繁杂弹窗，更适合静下心来逐条看。</p>
+      </div>
+      <div class="feature-item">
+        <h3>延伸线索</h3>
+        <p>条目末尾常附带关联词条或外部参考，适合喜欢追根究底的读者。</p>
+      </div>
+    </div>
+
+    <!-- 温和结尾 + 再提链接 -->
+    <div class="closing">
+      <p>
+        如果你也习惯在游戏间隙做一点资料功课，或只是需要一处安静的索引地，
+        不妨把 <a href="https://zhs-pggaming.com">pg游戏</a> 加入你的书签夹。
+        它不喧哗，不催促，只安静地陈列着那些你可能会问到的内容。
+      </p>
+      <p>
+        当然，所有条目最终还是要回到你自己的体验中去印证—— 
+        查询是起点，延伸阅读是路径，而理解永远发生在屏幕之外的片刻里。
+      </p>
+      <div class="quiet-link">
+        · 偶尔翻开，偶尔合上 ·
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
