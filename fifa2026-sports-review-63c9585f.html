@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 专题页面 | 日常查询与对照</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', 'Songti SC', serif;
+      background-color: #faf7f2;
+      color: #2b2b2b;
+      line-height: 1.7;
+      padding: 0 1.2rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 3rem auto 4rem;
+      background: #fffcf8;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border-radius: 28px;
+      padding: 2.5rem 2.2rem 3.2rem;
+    }
+
+    /* hero 横幅 — 杂志式引语 */
+    .hero {
+      text-align: center;
+      margin-bottom: 3.2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e7dfd7;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "⚽";
+      display: block;
+      font-size: 2.8rem;
+      opacity: 0.15;
+      margin-top: 0.2rem;
+      letter-spacing: 8px;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #2f2a24;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #7a7067;
+      letter-spacing: 1px;
+      font-style: italic;
+      margin-top: 0.6rem;
+    }
+
+    /* 背景说明块 */
+    .context-box {
+      background: #f2ede6;
+      padding: 1.4rem 2rem;
+      border-radius: 20px;
+      margin-bottom: 2.6rem;
+      font-size: 0.96rem;
+      border-left: 6px solid #c9b79b;
+      color: #3b342f;
+    }
+
+    .context-box strong {
+      color: #2f2a24;
+    }
+
+    /* 三段式正文 */
+    .section {
+      margin-bottom: 2.4rem;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      border-left: 5px solid #cfb595;
+      padding-left: 1rem;
+      margin-bottom: 0.8rem;
+      color: #3b332c;
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    /* 引用块 */
+    .pull-quote {
+      background: #f7f1ea;
+      padding: 1.2rem 1.8rem;
+      margin: 1.8rem 0 2rem;
+      border-radius: 30px 12px 30px 12px;
+      font-size: 1rem;
+      color: #3b342b;
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e1d6cb;
+    }
+
+    .pull-quote em {
+      font-style: italic;
+      color: #61564b;
+    }
+
+    .pull-quote .tag {
+      display: inline-block;
+      background: #cfb595;
+      color: #1f1b17;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.8rem;
+      border-radius: 40px;
+      letter-spacing: 0.4px;
+      margin-right: 0.3rem;
+      font-weight: 500;
+    }
+
+    /* 提示框 */
+    .tip-box {
+      background: #eae4db;
+      padding: 1rem 1.6rem;
+      border-radius: 40px 8px 40px 8px;
+      margin: 2rem 0 2.2rem;
+      font-size: 0.92rem;
+      border: 1px solid #d6cbbc;
+    }
+
+    .tip-box span {
+      font-weight: 600;
+      color: #2b241e;
+    }
+
+    /* FAQ 摘要 — 紧凑风格 */
+    .faq-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 2.2rem 0 1.8rem;
+      border-top: 1px dashed #ddd3c7;
+      padding-top: 1.8rem;
+    }
+
+    .faq-item {
+      background: transparent;
+      padding: 0.2rem 0;
+    }
+
+    .faq-item .q {
+      font-weight: 600;
+      color: #3b342b;
+      display: block;
+      font-size: 0.88rem;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.3px;
+    }
+
+    .faq-item .a {
+      font-size: 0.86rem;
+      color: #5b5248;
+      line-height: 1.5;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      margin-top: 2.6rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #e1d7cd;
+      text-align: center;
+      font-size: 1rem;
+      color: #4d443b;
+      background: #fdfaf6;
+      border-radius: 40px;
+      padding: 1.6rem 1rem;
+    }
+
+    .footer-note a {
+      color: #2f2a24;
+      text-decoration: none;
+      border-bottom: 2px solid #cfb595;
+      font-weight: 500;
+      transition: border-color 0.2s;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #8f7a64;
+      color: #14110e;
+    }
+
+    .footer-note .small-meta {
+      display: block;
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+      color: #958a7e;
+      letter-spacing: 0.6px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .page {
+        padding: 1.6rem 1.2rem 2rem;
+        margin: 1.6rem auto;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .faq-mini {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .context-box {
+        padding: 1rem 1.2rem;
+      }
+
+      .pull-quote {
+        padding: 1rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 杂志首页横幅 -->
+  <div class="hero">
+    <h1>世界杯·对照辑</h1>
+    <p>赛历 · 记录 · 延伸阅读</p>
+  </div>
+
+  <!-- 背景说明 -->
+  <div class="context-box">
+    <strong>关于这一专题</strong> —— 围绕 <a href="https://fifa2026--sports.com" style="color:#2f2a24;text-decoration:underline;text-decoration-color:#cfb595;">世界杯</a> 的信息需求往往不限于赛程本身。从历史对照、数据查询到赛事周边的深度理解，日常检索场景要求资料来源清晰、结构易读。本页围绕典型查询习惯，整理若干背景线索，方便快速参照。
+  </div>
+
+  <!-- 三段自然介绍 1：日常查询与对照 -->
+  <div class="section">
+    <h2>日常查询 · 对照维度</h2>
+    <p>对许多关注者而言，世界杯不只属于四年一度的直播时段。赛前分组走势、历史交锋记录、主办城市气候与时差，都构成提前查阅的理由。尤其当跨届次对比时 — 例如同组球队在上届的攻防数据、某球场此前举办过的淘汰赛级别 — 一个能够并置信息的框架比单纯赛程表更实用。</p>
+    <p>以 2026 年为例，赛制扩展至 48 支队伍，小组赛及淘汰赛轮次均有结构性调整。通过并列查阅前两届的轮次分布与晋级路径，能较快理解赛制的演变逻辑。</p>
+  </div>
+
+  <!-- 引用块 -->
+  <div class="pull-quote">
+    <span class="tag">检索贴士</span>
+    <em>“对照时优先锁定同一轮次（如小组赛第三轮 vs 淘汰赛首轮），避免因比赛密度不同而产生误读。场次编号与当地日期结合使用更准确。”</em>
+  </div>
+
+  <!-- 三段自然介绍 2：延伸阅读场景 -->
+  <div class="section">
+    <h2>延伸阅读 · 信息层</h2>
+    <p>赛事之外，世界杯的延伸信息需求集中在三块：主办国基础设施、参赛队近期阵容变动、以及裁判组与规则更新。例如 2026 年由美国、加拿大、墨西哥联合主办，跨时区与边境通关细节常成为查询热点。而各队洲际预选赛的出线路径，也会影响对种子队分档的预判。</p>
+    <p>此外，赛事用球、VAR 技术迭代、甚至中场休息时的文化表演阵容，在一些深度阅读场景中同样被高频检索。保持信息来源的官方性与更新日期，是延伸阅读时最基础的参照锚点。</p>
+  </div>
+
+  <!-- 提示框 -->
+  <div class="tip-box">
+    <span>◈ 对照思路</span> 将某一届的赛程表与前一届按“比赛日”对齐，而非按日历日期——尤其适用于跨时区主办时的作息规划。
+  </div>
+
+  <!-- 三段自然介绍 3：资料结构化建议 -->
+  <div class="section">
+    <h2>资料结构化 · 快速定位</h2>
+    <p>针对日常查询，建议将信息分为三个层级：<strong>赛历层</strong>（开球时间、场馆、转播信息）；<strong>背景层</strong>（历史交锋、积分规则、晋级条件）；<strong>叙事层</strong>（球队动态、伤病名单、场外新闻）。不同查询目的对应不同层级，避免在单一页面中混杂全部信息。</p>
+    <p>例如，在查阅某支球队的小组出线形势时，先定位赛历层确定剩余对手与时间，再进入背景层查看相互战绩与净胜球规则，最后通过叙事层了解赛前发布会信息。这种分层方式在信息过载的场景下尤为有效。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <div class="faq-item">
+      <span class="q">· 哪里可以查到历届世界杯场均进球数？</span>
+      <span class="a">主要足球数据站均提供按届次筛选的统计表，注意数据口径（含加时赛与否）需统一。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">· 联合主办时的时差如何对照？</span>
+      <span class="a">建议以比赛当地时间为基准，自行换算时差，并留意夏令时调整。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">· 世界杯用球有历届列表吗？</span>
+      <span class="a">国际足联官网发布过官方用球图鉴，部分体育博物馆也有线上档案。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">· 小组赛同分排名规则哪里查看？</span>
+      <span class="a">竞赛规程 PDF 中第 19-22 条详细写明了依次比较顺序。</span>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="footer-note">
+    <p>更多持续更新的赛历、对照工具与专题文章，可查阅 <a href="https://fifa2026--sports.com">世界杯</a> 信息页。</p>
+    <span class="small-meta">内容基于公开资料整理 · 日常查询参考</span>
+  </div>
+</div>
+</body>
+</html>
