@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 信息卡片 · FIFA2026</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fbe9d7 0%, #f5d6b8 50%, #ecc6a4 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrapper {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* hero 卡片 (主视觉) */
+    .hero-card {
+      background: white;
+      border-radius: 40px;
+      padding: 2.5rem 2.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 18px 40px -12px rgba(170, 100, 50, 0.28);
+      transition: box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(235, 150, 80, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-tagline {
+      display: inline-block;
+      background: #f1dac7;
+      color: #6d4c2f;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-card h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #2d1d0e;
+      margin-bottom: 0.6rem;
+      line-height: 1.15;
+    }
+
+    .hero-card h1 span {
+      background: linear-gradient(135deg, #b47b4a, #7f5b3a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #4f3a28;
+      max-width: 680px;
+      line-height: 1.6;
+      margin-top: 0.2rem;
+    }
+
+    /* 网格卡片区 */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 10px 28px -8px rgba(130, 70, 30, 0.14);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px -12px rgba(140, 80, 40, 0.22);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #341f10;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #edd7c3;
+      display: inline-block;
+    }
+
+    .card p, .card li {
+      color: #3f2d1c;
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.6rem;
+    }
+
+    .card ul li {
+      padding: 0.4rem 0 0.4rem 1.6rem;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: "•";
+      color: #b47b4a;
+      font-weight: bold;
+      position: absolute;
+      left: 0.2rem;
+      font-size: 1.2rem;
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.7rem;
+      margin-top: 1.2rem;
+    }
+
+    .tag {
+      background: #f2e2d3;
+      color: #4a3422;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      letter-spacing: 0.02em;
+    }
+
+    .tag.highlight {
+      background: #bd8c5c;
+      color: white;
+    }
+
+    /* 自然链接段落 (卡片式) */
+    .link-card {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem 2.4rem;
+      margin: 1.6rem 0;
+      box-shadow: 0 8px 26px -6px rgba(140, 75, 30, 0.12);
+    }
+
+    .link-card p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #2d1d0e;
+      margin-bottom: 0.5rem;
+    }
+
+    .link-card a {
+      color: #944f1f;
+      background: #f3e2d4;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .link-card a:hover {
+      background: #bd8c5c;
+      color: white;
+    }
+
+    .faq-mini {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem 2.2rem 2rem;
+      box-shadow: 0 8px 26px -6px rgba(130, 70, 30, 0.10);
+      margin-top: 1rem;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #341f10;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      color: #5d3e26;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-item p {
+      color: #3f2d1c;
+      line-height: 1.6;
+      font-size: 0.92rem;
+      margin-left: 0.2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e4cfbd;
+      margin: 1.2rem 0;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #543f2b;
+      font-size: 0.8rem;
+      padding: 1.8rem 0 0.6rem;
+      opacity: 0.7;
+    }
+
+    /* 响应式 */
+    @media (max-width: 800px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+
+      .hero-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .hero-card h1 {
+        font-size: 2.2rem;
+      }
+
+      .card, .link-card, .faq-mini {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .link-card a {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+
+      .hero-card h1 {
+        font-size: 1.9rem;
+      }
+
+      .tag {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <!-- 主视觉 hero -->
+  <div class="hero-card">
+    <div class="hero-tagline">⚽ 2026 · 赛事信息参考</div>
+    <h1>查阅 <span>世界杯</span> 的简明卡片</h1>
+    <p class="hero-sub">
+      从赛程对照到延伸阅读，以模块化方式整理关键信息，适合快速浏览与日常查询。
+      本页面向对国际足球赛事感兴趣、希望获得结构化参考内容的读者。
+    </p>
+  </div>
+
+  <!-- 两栏：用途卡片 + 适合人群 -->
+  <div class="grid-2col">
+    <!-- 用途卡片 -->
+    <div class="card">
+      <h2>用途卡片</h2>
+      <p>围绕赛事基础信息，提供几组常见查询场景：</p>
+      <ul>
+        <li>对照不同阶段的比赛时间区段（小组赛 / 淘汰赛）</li>
+        <li>了解主办城市及场馆分布概况（北美三区）</li>
+        <li>检索晋级规则与历史冠军汇总</li>
+        <li>阅读官方术语与常见统计指标说明</li>
+      </ul>
+      <div class="tag-group">
+        <span class="tag">赛程对照</span>
+        <span class="tag">城市指南</span>
+        <span class="tag highlight">基础数据</span>
+        <span class="tag">延伸阅读</span>
+      </div>
+    </div>
+
+    <!-- 适合人群 -->
+    <div class="card">
+      <h2>适合人群</h2>
+      <p>信息密度经过筛选，对以下读者尤其友好：</p>
+      <ul>
+        <li>希望迅速查阅赛事结构的轻度爱好者</li>
+        <li>需要整理背景资料的内容编辑或学生</li>
+        <li>参与观赛讨论前做基础信息核对的人</li>
+        <li>关注北美足球文化及赛事运营的观察者</li>
+      </ul>
+      <div class="tag-group">
+        <span class="tag">爱好者</span>
+        <span class="tag">内容编辑</span>
+        <span class="tag">观赛准备</span>
+        <span class="tag highlight">信息核对</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自然链接段落 (卡片) -->
+  <div class="link-card">
+    <p>
+      若需要了解更完整的赛程、球队分档及场馆详细数据，可参考数字平台 
+      <a href="https://fifa2026--tv.com">世界杯</a> 
+      的持续更新内容。该站点整理了官方发布的比赛日历与参赛队伍名单，
+      并提供按日期筛选的小组对阵预览，适合作为日常对照查询的辅助来源。
+    </p>
+    <p style="margin-top: 0.8rem;">
+      另有一些基于公开数据整理的延伸阅读（如历届决赛数据、主办城市交通贴士），
+      可结合上述链接进一步探索。本页仅做结构化索引用途，不替代任何官方公告。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要卡片 -->
+  <div class="faq-mini">
+    <h3>❓ 常见信息摘要</h3>
+    <div class="faq-item">
+      <strong>2026 世界杯赛程区间？</strong>
+      <p>比赛定于 2026 年 6 月至 7 月在美国、加拿大、墨西哥三地举行，共 48 支队伍，104 场赛事。</p>
+    </div>
+    <div class="faq-item">
+      <strong>如何获取准确的对阵时间？</strong>
+      <p>所有比赛时间以官方赛程表为准。可查阅前述<a href="https://fifa2026--tv.com" style="background: transparent; padding: 0; color: #944f1f; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">世界杯</a>页面中的日历模块，按日期与城市筛选。</p>
+    </div>
+    <div class="faq-item">
+      <strong>主办城市有几座？</strong>
+      <p>共有 16 个主办城市分布三国，其中美国 11 座、加拿大 2 座、墨西哥 3 座。</p>
+    </div>
+    <hr>
+    <p style="font-size: 0.88rem; color: #4f3a28; margin-top: 0.4rem;">
+      ※ 以上摘要基于公开资料整理，如有变动请以 fédération internationale 最新公告为准。
+    </p>
+  </div>
+
+  <div class="footer-note">
+    信息卡片式 · 简洁专业 · 日常查询参考
+  </div>
+</div>
+</body>
+</html>
